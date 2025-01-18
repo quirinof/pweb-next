@@ -1,11 +1,24 @@
 export default function Home() {
   return (
     <div>
-      <div>Menu principal</div>
+      <MenuPrincipal />
+      <Caico />
+    </div>
+  );
+}
 
-      <div>
-        <h1>Viva Santana!</h1>
-      </div>
+export function MenuPrincipal() {
+  return (
+    <div>
+      <div>Menu principal</div>
+    </div>
+  );
+}
+
+export function Caico() {
+  return (
+    <div>
+      <h1>Viva Santana!</h1>
     </div>
   );
 }
