@@ -1,5 +1,5 @@
 export default async function Home({ searchParams }) {
-  const { titleSearchKey = "bagdad", type = "", year = "" } = searchParams;
+  const { titleSearchKey = "city", type = "", year = "" } = searchParams;
 
   const queryParams = new URLSearchParams({
     apikey: "66e4da88",

@@ -5,7 +5,7 @@ export default function Home() {
     <div>
       <div>
         <h1>CineCaicó</h1>
-        <Link href="/movies">Filmes</Link> <br />
+        <Link href="/movieSearch">Filmes</Link> <br />
       </div>
     </div>
   );
