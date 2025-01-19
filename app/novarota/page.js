@@ -1,9 +1,11 @@
+import Link from "next/link";
 import { MariaPrea } from "./components";
 
 export default function NovaRotaHome() {
   return (
     <div>
-      <h1>Nova Rota, Nova Página</h1>
+      <Link href="/novarota/eps">Episodios</Link> <br />
+      <Link href="/novarota/conclusao">Conclusao</Link> <br />
       <MariaPrea mensagem="Morreu Maria Preá, mas a história continua..." />
     </div>
   );

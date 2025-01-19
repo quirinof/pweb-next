@@ -4,10 +4,13 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-  console.log("montando layout");
+  console.log("Montando layout global");
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <div> Menu principal </div>
+        {children}
+      </body>
     </html>
   );
 }
