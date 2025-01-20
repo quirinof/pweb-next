@@ -1,5 +1,5 @@
 export default async function Home({ searchParams }) {
-  const { titleSearchKey = "city", type = "", year = "" } = searchParams;
+  const { titleSearchKey = "", type = "", year = "" } = await searchParams;
 
   const queryParams = new URLSearchParams({
     apikey: "66e4da88",
@@ -12,7 +12,9 @@ export default async function Home({ searchParams }) {
   const data = await res.json();
 
   if (!data.Search) {
-    return <div>Erro.</div>;
+    return (
+      <div>Erro. Se não tiver digitado um titulo, digite título e ano.</div>
+    );
   }
 
   return (
