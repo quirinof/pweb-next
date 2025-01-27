@@ -2,14 +2,18 @@
 
 export async function searchMovies(formData) {
   const titleSearchKey = formData.get("titleSearchKey");
+  const yearSearchKey = formData.get("yearSearchKey");
 
   if (!titleSearchKey || titleSearchKey == "") return { Search: [] };
 
   try {
-    const httpRes = await fetch(
-      `http://www.omdbapi.com/?apikey=66e4da88&s=${titleSearchKey}`
-    );
+    let apiUrl = `http://www.omdbapi.com/?apikey=66e4da88&s=${titleSearchKey}`;
 
+    if (yearSearchKey) {
+      apiUrl += `&y=${yearSearchKey}`;
+    }
+
+    const httpRes = await fetch(apiUrl);
     const jsonRes = await httpRes.json();
 
     return jsonRes;

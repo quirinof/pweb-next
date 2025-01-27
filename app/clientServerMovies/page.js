@@ -1,9 +1,7 @@
 "use client";
 
 import { searchMovies } from "../actions/movieActions";
-
 import Form from "next/form";
-
 import { useState } from "react";
 
 export default function Home() {
@@ -27,8 +25,10 @@ export function MovieForm({ actionHandler }) {
   return (
     <Form action={actionHandler}>
       <label htmlFor="idTitleSearchKey">Título</label>
-
       <input id="idTitleSearchKey" name="titleSearchKey" />
+
+      <label htmlFor="idYearSearchKey">Ano</label>
+      <input id="idYearSearchKey" name="yearSearchKey" type="number" />
 
       <button type="submit">Pesquisar</button>
     </Form>
