@@ -1,13 +1,17 @@
+import fs from "fs";
+import path from "path";
+
 export async function GET(request) {
-  const searchParams = request.nextUrl.searchParams;
+  const searchParams = new URL(request.url).searchParams;
+  const titleSearchKey = searchParams.get("titleSearchKey") || "";
 
-  const titleSearchKey = searchParams.get("titleSearchKey");
+  const filePath = path.join(process.cwd(), "app/api/searchMovies/db.json");
 
-  const httpRes = await fetch(
-    `http://www.omdbapi.com/?apikey=f1cbc41e&s=${titleSearchKey}`
+  const data = JSON.parse(fs.readFileSync(filePath, "utf8"));
+
+  const movies = data.movies.filter((movie) =>
+    movie.title.toLowerCase().includes(titleSearchKey.toLowerCase())
   );
 
-  const jsonRes = await httpRes.json();
-
-  return Response.json({ ...jsonRes });
+  return Response.json({ Search: movies });
 }

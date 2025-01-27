@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import "./styles.css";
 
 export default function Home() {
   const [resultMovies, setResultMovies] = useState([]);
@@ -24,12 +23,12 @@ export default function Home() {
       console.error("Erro", error);
       alert("Houve um erro. Tente novamente.");
     } finally {
-      setIsLoading(false); // Reabilita o botão.
+      setIsLoading(false);
     }
   }
 
   return (
-    <div className="container">
+    <div>
       <MovieForm
         handleAction={handleAction}
         titleSearchKey={titleSearchKey}
@@ -49,15 +48,10 @@ export function MovieForm({
   isLoading,
 }) {
   return (
-    <form onSubmit={handleAction} className="form-container">
-      <h2 className="form-title">Pesquisa de Filmes</h2>
+    <form onSubmit={handleAction}>
+      <h2>Pesquisa de Filmes</h2>
 
-      <label
-        htmlFor="idTitleSearchKey"
-        className="block text-sm font-medium text-gray-700"
-      >
-        Título
-      </label>
+      <label htmlFor="idTitleSearchKey">Título</label>
 
       <input
         id="idTitleSearchKey"
@@ -67,17 +61,12 @@ export function MovieForm({
         onKeyDown={(e) => {
           if (e.key === "Enter") {
             e.preventDefault();
-            handleAction(e); // Submete o formulário ao pressionar <Enter>.
+            handleAction(e);
           }
         }}
-        className="input-field"
       />
 
-      <button
-        type="submit"
-        disabled={isLoading}
-        className={`submit-btn ${isLoading ? "disabled" : ""}`}
-      >
+      <button type="submit" disabled={isLoading}>
         {isLoading ? "Pesquisando..." : "Pesquisar"}
       </button>
     </form>
@@ -86,14 +75,14 @@ export function MovieForm({
 
 export function MovieTable({ movies }) {
   return (
-    <div className="table-container">
-      <h2 className="text-xl font-semibold mb-4">Resultados da Pesquisa</h2>
+    <div>
       <div>
         {movies.map((m) => (
-          <div key={m.imdbID} className="table-item">
+          <div key={m.id}>
             <div>
-              <p>{m.Title}</p>
-              <span>{m.Year}</span>
+              <p>
+                {m.title} -- {m.year}
+              </p>
             </div>
           </div>
         ))}
